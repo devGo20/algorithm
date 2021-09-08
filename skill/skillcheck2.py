@@ -13,26 +13,25 @@ print(solution([1,2], [3,4]))
 # News
 def solution(str1, str2):
     answer = 0
-    a = tans(str1.upper())
-    b = tans(str2.upper())
-
-    if len(a) == 0 and len(b) == 0:
-        return 65536
-    cntUnion = len(b.union(a))
-    cntIntersect = len(a.intersection(b))
-    print(list(a.intersection(b)))
-
-    return int((cntIntersect / cntUnion) * 65536) 
-
-def tans(str):
+    a = trans(str1.upper())
+    b = trans(str2.upper())
+    inter = set(a) & set(b)
+    union = set(a) | set(b)
+    print(inter,union)
+    sum_inter = sum([min(a.count(i), b.count(i)) for i in inter])
+    sum_union = sum([max(a.count(i), b.count(i)) for i in union])
+    print(sum_inter, sum_union)
+    if not sum_inter and not sum_union: return 65536
+    return int(sum_inter/sum_union * 65536)     
+def trans(str):
     list = []
     for i in range(len(str)-1):
-        if str[i:i+2].isalnum():
+        if str[i:i+2].isalpha():
             list.append(str[i:i+2]) 
-    print(list)
     return list
-# print(solution("FRANCE", "french"))
-# print(solution("E=M*C^2", "e=m*c^2"))
-print(solution("aa1+aa2", "AAAA12"))
-# print(solution("handshake", "shake hands"))
 
+    
+print(solution("FRANCE", "french"))
+# print(solution("E=M*C^2", "e=m*c^2"))
+# print(solution("aa1+aa2", "AAAA12"))
+# print(solution("handshake", "shake hands"))
