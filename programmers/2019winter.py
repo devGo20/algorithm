@@ -16,6 +16,7 @@ def solution(board, moves):
                     play.append(board[j][i-1])
                 # 꺼낸 인형 0으로 만들기
                 board[j][i-1] = 0
+                # 더이상 인형을 찾지 않도록 break
                 break
                     
     return answer
