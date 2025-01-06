@@ -2,10 +2,5 @@
 
 function solution(X, Y, D) {
   let remain = Y - X
-  let jumpCnt = remain / D
-  if (jumpCnt * D + X > Y) {
-    return jumpCnt
-  } else {
-    return jumpCnt + 1
-  }
+  return Math.ceil(remain / D)
 }
