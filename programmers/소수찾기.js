@@ -1,10 +1,10 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/42839?language=javascript
-// 조합 함수
+// 순열 함수
 function getAllPermutations(arr) {
   const results = [];
 
   function permute(current, remaining) {
-    // 현재 조합 저장 (빈 배열 제외)
+    // 현재 순열 저장 (빈 배열 제외)
     if (current.length > 0) {
       results.push(current);
     }
