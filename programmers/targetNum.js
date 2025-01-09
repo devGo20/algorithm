@@ -1,19 +1,14 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/43165
 function solution(numbers, target) {
-  let count = 0;
-  let stack = []
-  stack.push([0, 0])
-  while (stack.length > 0) {
-    let [idx, total] = stack.pop()
+  function dfs(idx, sum) {
     if (idx === numbers.length) {
-      if (total === target) count++
-      continue
+      return sum === target ? 1 : 0
     }
-    stack.push([idx + 1, total + numbers[idx]])
-    stack.push([idx + 1, total - numbers[idx]])
-    console.log(stack)
+    let add = dfs(idx + 1, sum + numbers[idx]);
+    let sub = dfs(idx + 1, sum - numbers[idx]);
+    return add + sub
   }
-  return count
+  return dfs(0, 0)
 }
 
 console.log(solution([1, 1, 1, 1, 1], 3))
