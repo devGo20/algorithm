@@ -5,7 +5,7 @@ function solution(A) {
     if (A[i] === 0) {
       eastCnt++
     } else {
-      answer += (eastCnt * 1)
+      answer += eastCnt
     }
     if (answer > 1000000000) {
       return -1
